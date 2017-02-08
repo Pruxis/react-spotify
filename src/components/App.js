@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Library from './Library';
+import Playlist from './Playlist';
 
 class App extends Component {
-  
+
   state = {
     tracks: {}
   };
@@ -15,14 +16,23 @@ class App extends Component {
     const timestamp = Date.now();
     tracks[`track-${timestamp}`] = track;
     // Setting the state.
-    this.setState({tracks});
+    this.setState({ tracks });
   }
 
   render() {
     return (
       <div className="container">
         <Header />
-        <Library />
+        <div className="row">
+          <div className="col-lg-6 col-md-6 col-sm-6">
+            <Library addTrack={this.addTrack} />
+          </div>
+          <div className="col-lg-6 col-md-6 col-sm-6">
+            <Playlist />
+          </div>
+
+        </div>
+
       </div>
     )
   }

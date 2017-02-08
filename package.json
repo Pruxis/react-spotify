@@ -18,7 +18,10 @@
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router": "4.0.0-alpha.4"
+    "react-native-spotify": "^1.0.1",
+    "react-router": "4.0.0-alpha.4",
+    "spotify-web-api-node": "^2.3.6",
+    "uuid": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
