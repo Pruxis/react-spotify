@@ -10,14 +10,14 @@ class Library extends Component {
 
   // Search on Spotify and populate the state with the found tracks.
   searchSpotify = () => {
-    got(`https://api.spotify.com/v1/search?query=%27${this.searchTracks.value}%27&offset=0&limit=20&type=track`)
+    got(`https://api.spotify.com/v1/search?query=${this.searchInput.value}&limit=5&type=track`)
         .then(response => {
             this.setState({
-              tracks: response.body
+              tracks: JSON.parse(response.body).tracks.items
             })
         })
         .catch(error => {
-            console.log(error.response.body);
+            console.log(error.response);
         });
   }
 
@@ -31,10 +31,18 @@ class Library extends Component {
           type="text" 
           className="form-control" 
           placeholder="Search Music.." />
-          <Track/>
+          {
+                Object.keys(this.state.tracks)
+                .map(key => <Track key={key} track={this.state.tracks[key]}/>)
+          }
+          
         </div>
       </div>
     );
+  }
+
+  state = {
+    tracks: {}
   }
 }
 
